@@ -2,6 +2,7 @@
 Imports Microsoft.Data.SqlClient
 Imports System.IO
 Imports System.ServiceProcess
+Imports Biblioteca.Modulos.Utils.Funcoes
 Namespace Classes.Conexao
     Public Class ConexaoSQLServer
 #Region "PROPRIEDADES"
@@ -14,7 +15,7 @@ Namespace Classes.Conexao
                 pServidor = value
             End Set
         End Property
-        Private pDataBase = "SysVendasTeste"
+        Private pDataBase = " "
         Public Property DataBase As String
             Get
                 Return pDataBase
@@ -62,7 +63,7 @@ Namespace Classes.Conexao
                 DataBase = LeArquivoINI(Arquivo, "Geral", "Banco", "INSIRA O BANCO DE DADOS")
                 pstrConexao = $"Data Source={Servidor};Initial Catalog={DataBase};User ID=sa; Password=123456;Integrated Security=True"
             Else
-                MessageBox.Show("Arquivo de configuração não encontrado! Será carrregado as configurações padrão do sistema.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                ' MessageBox.Show("Arquivo de configuração não encontrado! Será carrregado as configurações padrão do sistema.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         End Sub
 #End Region
@@ -84,7 +85,7 @@ Namespace Classes.Conexao
                     End Using
                 End Using
             Catch ex As Exception '
-                MessageBox.Show("Não foi possível realizar a operação" & vbCrLf & ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                ' MessageBox.Show("Não foi possível realizar a operação" & vbCrLf & ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Throw
             End Try
         End Sub
@@ -111,7 +112,7 @@ Namespace Classes.Conexao
                     End Using
                 End Using
             Catch ex As Exception
-                MessageBox.Show("Não foi possível executar a procedure!" & vbCrLf & ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                'MessageBox.Show("Não foi possível executar a procedure!" & vbCrLf & ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End Sub
         Private Sub AlterarStringDeConexao()
@@ -191,8 +192,7 @@ Namespace Classes.Conexao
                     End Using
                 End Using
             Catch ex As Exception
-                MessageBox.Show("Não foi possível consultar os dados!" & vbCrLf & ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                ' Opcional: log do erro ou tratamento adicional
+                'MessageBox.Show("Não foi possível consultar os dados!" & vbCrLf & ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
 
             Return dt
@@ -217,10 +217,8 @@ Namespace Classes.Conexao
                     End Using
                 End Using
             Catch ex As Exception
-                MessageBox.Show("Não foi possível consultar os dados!" & vbCrLf & ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                ' Opcional: log do erro ou tratamento adicional
+                '  MessageBox.Show("Não foi possível consultar os dados!" & vbCrLf & ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
-
             Return dt
         End Function
 
